@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("com.google.gms.google-services")
+    id("kotlin-kapt") // ➕ tambahkan ini untuk Glide compiler
 }
 
 android {
@@ -27,6 +28,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -35,7 +37,6 @@ android {
     buildFeatures {
         viewBinding = true
     }
-
 
     kotlinOptions {
         jvmTarget = "11"
@@ -58,9 +59,16 @@ dependencies {
     // Firebase Authentication
     implementation("com.google.firebase:firebase-auth")
 
+    // Firestore & Storage
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-storage")
+
     // Google Identity Services
     implementation("androidx.credentials:credentials:1.3.0")
     implementation("androidx.credentials:credentials-play-services-auth:1.3.0")
     implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
-    implementation("com.google.firebase:firebase-firestore")
+
+    // ➕ Glide untuk load gambar
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    kapt("com.github.bumptech.glide:compiler:4.16.0")
 }

@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun prepareRequest(): GetCredentialRequest {
         val serverClientId =
-            "824354432771-9oj8bqgi98so7sfv1386mq77ol3l27ko.apps.googleusercontent.com"
+            "328715163183-nsoiakel5qkpuvvpc0qrct0r6vu065ei.apps.googleusercontent.com"
 
         val googleIdOption = GetGoogleIdOption.Builder()
             .setFilterByAuthorizedAccounts(false)
