@@ -2,71 +2,50 @@ package com.example.honeey
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.honeey.adapter.Post
 import com.example.honeey.adapter.PostAdapter
 import com.example.honeey.databinding.ActivityHomeBinding
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var auth: FirebaseAuth
     private lateinit var adapter: PostAdapter
-    private val firestore = FirebaseFirestore.getInstance()
+    private lateinit var firestore: FirebaseFirestore
+    private var listener: ListenerRegistration? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Inisialisasi Firebase Auth
-        auth = FirebaseAuth.getInstance()
+        firestore = FirebaseFirestore.getInstance()
 
-        // Setup RecyclerView dan Event
-        setupRecyclerView()
-        setupEvents()
-
-        // Ambil data postingan dari Firestore
-        loadPostsFromFirestore()
-    }
-
-    // --- Setup RecyclerView ---
-    private fun setupRecyclerView() {
         adapter = PostAdapter(mutableListOf())
-        binding.recyclerPosts.layoutManager = LinearLayoutManager(this)
-        binding.recyclerPosts.adapter = adapter
-    }
+        binding.recyclerViewPosts.layoutManager = LinearLayoutManager(this)
+        binding.recyclerViewPosts.adapter = adapter
 
-    // --- Ambil data dari Firestore ---
-    private fun loadPostsFromFirestore() {
-        firestore.collection("posts")
-            .addSnapshotListener { value, error ->
-                if (error != null) {
-                    Toast.makeText(this, "Gagal memuat postingan 🐝", Toast.LENGTH_SHORT).show()
-                    return@addSnapshotListener
-                }
-
-                val posts = value?.toObjects(Post::class.java) ?: emptyList()
-                adapter.updateData(posts)
-            }
-    }
-
-    // --- Event Listener ---
-    private fun setupEvents() {
-        // Tombol Logout
-        binding.btnLogout.setOnClickListener {
-            auth.signOut()
-            Toast.makeText(this, "Berhasil logout 🐝", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        }
-
-        // Tombol Tambah Postingan
+        // Tombol tambah postingan
         binding.btnAddPost.setOnClickListener {
             startActivity(Intent(this, CreatePostActivity::class.java))
         }
+
+        // 🔥 Realtime listener Firestore
+        listener = firestore.collection("posts")
+            .addSnapshotListener { snapshot, error ->
+                if (error != null) return@addSnapshotListener
+                if (snapshot != null) {
+                    val posts = snapshot.documents.mapNotNull { it.toObject(Post::class.java) }
+                    adapter.updateData(posts.reversed()) // terbaru di atas
+                }
+            }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        listener?.remove() // hentikan listener saat activity ditutup
     }
 }

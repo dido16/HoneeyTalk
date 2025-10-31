@@ -1,6 +1,6 @@
 package com.example.honeey
 
-data class Post(
+data class  Post(
     val id: String = "",
     val imageUrl: String = "",
     val description: String = "",

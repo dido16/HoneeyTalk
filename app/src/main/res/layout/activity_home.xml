@@ -6,7 +6,8 @@
     android:id="@+id/layoutHome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivity"
+    android:background="#121212">
 
     <!-- Tombol Logout -->
     <Button
@@ -14,6 +15,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Logout"
+        android:backgroundTint="#6A1B9A"
+        android:textColor="@android:color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="16dp" />
@@ -24,19 +27,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tambah Postingan"
+        android:backgroundTint="#6A1B9A"
+        android:textColor="@android:color/white"
         app:layout_constraintTop_toBottomOf="@id/btnLogout"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="16dp" />
 
     <!-- RecyclerView untuk menampilkan postingan -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerPosts"
+        android:id="@+id/recyclerViewPosts"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="8dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical"
         app:layout_constraintTop_toBottomOf="@id/btnAddPost"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_post" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
