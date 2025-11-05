@@ -23,6 +23,15 @@
         android:textSize="16sp"
         android:paddingTop="8dp" />
 
+    <!-- 🔹 Email pembuat posting -->
+    <TextView
+        android:id="@+id/textUserEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#CCCCCC"
+        android:textSize="12sp"
+        android:paddingTop="2dp" />
+
     <TextView
         android:id="@+id/textLikes"
         android:layout_width="wrap_content"

@@ -1,38 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/imagePreview"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:scaleType="centerCrop"
-        android:background="#DDDDDD"
-        android:layout_gravity="center"
-        android:contentDescription="preview" />
-
-    <Button
-        android:id="@+id/btnSelectImage"
-        android:text="Pilih Gambar"
-        android:layout_marginTop="12dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/inputImageUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Masukkan link gambar (https://...)"
+        android:inputType="textUri"/>
 
     <EditText
         android:id="@+id/inputDescription"
-        android:hint="Tulis deskripsi..."
-        android:layout_marginTop="12dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="Tulis deskripsi"/>
 
     <Button
         android:id="@+id/btnUploadPost"
-        android:text="Upload Postingan"
-        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Upload Post"/>
+
 </LinearLayout>

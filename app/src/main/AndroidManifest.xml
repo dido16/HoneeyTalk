@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.honeey">
 
-    <!-- 🔹 Tambahkan izin di sini -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <!-- 🔹 Izin Internet wajib agar Glide bisa load gambar -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -19,16 +19,9 @@
         android:theme="@style/Theme.Honeey"
         tools:targetApi="31">
 
-
-        <activity
-            android:name=".Post"
-            android:exported="false" />
         <activity
             android:name=".CreatePostActivity"
             android:exported="true" />
-        <activity
-            android:name=".adapter.PostAdapter"
-            android:exported="false" />
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
