@@ -32,12 +32,12 @@ class HomeActivity : AppCompatActivity() {
         binding.recyclerViewPosts.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewPosts.adapter = adapter
 
-        // 🟣 Tombol tambah postingan
+        //  Tombol tambah postingan
         binding.btnAddPost.setOnClickListener {
             startActivity(Intent(this, CreatePostActivity::class.java))
         }
 
-        // 🟢 Tombol Logout
+        //  Tombol Logout
         binding.btnLogout.setOnClickListener {
             FirebaseAuth.getInstance().signOut() // keluar dari akun
             Toast.makeText(this, "Berhasil logout", Toast.LENGTH_SHORT).show()
@@ -49,7 +49,7 @@ class HomeActivity : AppCompatActivity() {
             finish()
         }
 
-        // 🔥 Realtime listener Firestore (update otomatis)
+        //  Realtime listener Firestore (update otomatis)
         listener = firestore.collection("posts")
             .addSnapshotListener { snapshot, error ->
                 if (error != null) return@addSnapshotListener

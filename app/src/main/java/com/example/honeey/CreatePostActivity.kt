@@ -27,7 +27,7 @@ class CreatePostActivity : AppCompatActivity() {
 
     private fun uploadPost() {
         val desc = binding.inputDescription.text.toString().trim()
-        val imageUrl = binding.inputImageUrl.text.toString().trim() // 🔹 ambil link gambar dari EditText
+        val imageUrl = binding.inputImageUrl.text.toString().trim() //  ambil link gambar dari EditText
 
         if (desc.isEmpty() || imageUrl.isEmpty()) {
             Toast.makeText(this, "Isi deskripsi dan link gambar!", Toast.LENGTH_SHORT).show()

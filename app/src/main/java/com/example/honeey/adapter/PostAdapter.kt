@@ -38,14 +38,14 @@ class PostAdapter(
         val context = holder.itemView.context
         val db = FirebaseFirestore.getInstance()
 
-        // ✅ Pastikan URL valid
+        //  Pastikan URL valid
         var fixedUrl = post.imageUrl.trim()
         if (fixedUrl.startsWith("http://")) fixedUrl = fixedUrl.replace("http://", "https://")
         if (fixedUrl.contains("https://ibb.co")) {
             fixedUrl = fixedUrl.replace("https://ibb.co", "https://i.ibb.co")
         }
 
-        // 🔹 Tampilkan gambar
+        //  Tampilkan gambar
         Glide.with(context)
             .load(fixedUrl)
             .placeholder(android.R.color.darker_gray)
@@ -53,13 +53,13 @@ class PostAdapter(
             .centerCrop()
             .into(holder.binding.imagePost)
 
-        // 🔹 Isi teks
+        //  Isi teks
         holder.binding.textDescription.text = post.description
         holder.binding.textUserEmail.text =
             "Dipost oleh: ${post.userEmail.ifEmpty { "Tidak diketahui" }}"
         holder.binding.textLikes.text = "${post.likes} Likes"
 
-        // ❤️ Double tap untuk like
+        //  Double tap untuk like
         holder.binding.imagePost.setOnClickListener {
             val currentTime = System.currentTimeMillis()
             if (currentTime - holder.lastTapTime < 300) {
@@ -78,7 +78,7 @@ class PostAdapter(
             holder.lastTapTime = currentTime
         }
 
-        // ⋮ Tombol titik tiga
+        //  Tombol titik tiga
         holder.binding.btnMore.setOnClickListener {
             if (post.userEmail != currentUserEmail) {
                 Toast.makeText(context, "Kamu tidak bisa mengedit postingan orang lain", Toast.LENGTH_SHORT).show()

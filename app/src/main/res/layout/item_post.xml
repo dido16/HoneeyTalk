@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="12dp"
-    android:background="@color/black">
+    android:layout_margin="8dp"
+    android:backgroundTint="@color/white"
+    android:elevation="6dp"
+    android:orientation="vertical"
+    android:radius="12dp"
+    android:padding="8dp">
 
     <!-- 🔹 Gambar posting + tombol menu di pojok kanan -->
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp">
+        android:layout_height="220dp"
+        android:clipToOutline="true">
 
         <ImageView
             android:id="@+id/imagePost"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:adjustViewBounds="true"
-            android:background="@color/black"
             android:contentDescription="Post Image" />
 
         <!-- 🔹 Tombol titik tiga -->
@@ -41,17 +43,21 @@
         android:id="@+id/textDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@android:color/black"
         android:textSize="16sp"
-        android:paddingTop="8dp" />
+        android:paddingTop="8dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:fontFamily="sans-serif-medium" />
 
     <!-- Email pembuat -->
     <TextView
         android:id="@+id/textUserEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#CCCCCC"
-        android:textSize="12sp"
+        android:textColor="#757575"
+        android:textSize="13sp"
+        android:paddingStart="4dp"
         android:paddingTop="2dp" />
 
     <!-- Jumlah likes -->
@@ -59,7 +65,10 @@
         android:id="@+id/textLikes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="#F2B705"
         android:textSize="14sp"
-        android:paddingTop="4dp" />
+        android:paddingStart="4dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="6dp"
+        android:fontFamily="sans-serif" />
 </LinearLayout>
