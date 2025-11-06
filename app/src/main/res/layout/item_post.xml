@@ -1,20 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="12dp"
     android:background="@color/black">
 
-    <ImageView
-        android:id="@+id/imagePost"
+    <!-- 🔹 Gambar posting + tombol menu di pojok kanan -->
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true"
-        android:background="@color/black"
-        android:contentDescription="Post Image"/>
+        android:layout_height="250dp">
 
+        <ImageView
+            android:id="@+id/imagePost"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:background="@color/black"
+            android:contentDescription="Post Image" />
+
+        <!-- 🔹 Tombol titik tiga -->
+        <ImageView
+            android:id="@+id/btnMore"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="8dp"
+            android:padding="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/more_vert_icon"
+            android:tint="@android:color/white"
+            android:contentDescription="Menu lainnya"
+            tools:ignore="UseAppTint" />
+    </FrameLayout>
+
+    <!-- Deskripsi -->
     <TextView
         android:id="@+id/textDescription"
         android:layout_width="wrap_content"
@@ -23,7 +45,7 @@
         android:textSize="16sp"
         android:paddingTop="8dp" />
 
-    <!-- 🔹 Email pembuat posting -->
+    <!-- Email pembuat -->
     <TextView
         android:id="@+id/textUserEmail"
         android:layout_width="wrap_content"
@@ -32,6 +54,7 @@
         android:textSize="12sp"
         android:paddingTop="2dp" />
 
+    <!-- Jumlah likes -->
     <TextView
         android:id="@+id/textLikes"
         android:layout_width="wrap_content"
